@@ -19,5 +19,8 @@ main =
         [ div [ class "header" ]
             [ h1 [] [ text "Picshare" ] ]
         , div [ class "content-flow" ]
-            [ viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra" ]
+            [ viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
+            , viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
+            , viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
+            ]
         ]
