@@ -12,10 +12,7 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-    { url = "https://avatars.githubusercontent.com/u/36134103?v=4"
-    , caption = "kazuhi-ra"
-    , liked = False
-    }
+    Model "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra" False
 
 
 viewDetailedPhoto : Model -> Html Msg
