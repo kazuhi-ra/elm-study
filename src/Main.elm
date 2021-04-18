@@ -4,12 +4,22 @@ import Html exposing (text)
 
 
 main =
-    text (Debug.toString meaningOfLife)
+    text (bottlesOf "juice" 99)
 
 
 greeting : String
 greeting =
     "Hello, Static Elm!"
+
+
+bottlesOf : String -> Int -> String
+bottlesOf contents amount =
+    Debug.toString amount ++ " bottles of " ++ contents ++ " on the wall"
+
+
+sayHello : String -> String
+sayHello name =
+    "Hello, " ++ name ++ "."
 
 
 meaningOfLife : Int
