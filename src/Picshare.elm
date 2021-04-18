@@ -4,23 +4,31 @@ import Html exposing (..)
 import Html.Attributes exposing (class, src)
 
 
-viewDetailedPhoto : String -> String -> Html msg
-viewDetailedPhoto url caption =
+initialModel : { url : String, caption : String }
+initialModel =
+    { url = "https://avatars.githubusercontent.com/u/36134103?v=4"
+    , caption = "kazuhi-ra"
+    }
+
+
+viewDetailedPhoto : { url : String, caption : String } -> Html msg
+viewDetailedPhoto model =
     div [ class "detailed-photo" ]
-        [ img [ src url ] []
+        [ img [ src model.url ] []
         , div [ class "photo-info" ]
-            [ h2 [ class "caption" ] [ text caption ] ]
+            [ h2 [ class "caption" ] [ text model.caption ] ]
         ]
 
 
-main : Html msg
-main =
+view : { url : String, caption : String } -> Html msg
+view model =
     div []
         [ div [ class "header" ]
             [ h1 [] [ text "Picshare" ] ]
         , div [ class "content-flow" ]
-            [ viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
-            , viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
-            , viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra"
-            ]
+            [ viewDetailedPhoto model ]
         ]
+
+
+main =
+    view initialModel
