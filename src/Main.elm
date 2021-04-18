@@ -35,3 +35,8 @@ pi =
 canChuck : Bool
 canChuck =
     True
+
+
+list : List String
+list =
+    [ "kazuhira", "pstak" ]
