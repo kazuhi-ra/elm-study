@@ -15,36 +15,26 @@ initialModel =
     Model "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra" False
 
 
+viewLobeButton : Model -> Html Msg
+viewLobeButton model =
+    let
+        heartText =
+            if model.liked then
+                "❤️"
+
+            else
+                "♡"
+    in
+    div [ class "like-button" ]
+        [ i [ onClick ToggleLike ] [ text heartText ] ]
+
+
 viewDetailedPhoto : Model -> Html Msg
 viewDetailedPhoto model =
-    let
-        buttonClass =
-            if model.liked then
-                "fa-heart"
-
-            else
-                "fa-heart-o"
-
-        msg =
-            if model.liked then
-                Unlike
-
-            else
-                Like
-    in
     div [ class "detailed-photo" ]
         [ img [ src model.url ] []
         , div [ class "photo-info" ]
-            [ div [ class "like-button" ]
-                [ i
-                    [ class "fa fa-2x"
-                    , class buttonClass
-                    , onClick msg
-                    ]
-                    []
-                ]
-            , h2 [ class "caption" ] [ text model.caption ]
-            ]
+            [ viewLobeButton model ]
         ]
 
 
@@ -54,26 +44,21 @@ view model =
         [ div [ class "header" ]
             [ h1 [] [ text "Picshare" ] ]
         , div [ class "content-flow" ]
-            [ viewDetailedPhoto model ]
+            [ viewDetailedPhoto model
+            , h2 [ class "caption" ] [ text model.caption ]
+            ]
         ]
 
 
 type Msg
-    = Like
-    | Unlike
+    = ToggleLike
 
 
-update :
-    Msg
-    -> Model
-    -> Model
+update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Like ->
-            { model | liked = True }
-
-        Unlike ->
-            { model | liked = False }
+        ToggleLike ->
+            { model | liked = not model.liked }
 
 
 main : Program () Model Msg
