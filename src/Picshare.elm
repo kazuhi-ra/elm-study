@@ -4,14 +4,20 @@ import Html exposing (..)
 import Html.Attributes exposing (class, src)
 
 
+viewDetailedPhoto : String -> String -> Html msg
+viewDetailedPhoto url caption =
+    div [ class "detailed-photo" ]
+        [ img [ src url ] []
+        , div [ class "photo-info" ]
+            [ h2 [ class "caption" ] [ text caption ] ]
+        ]
+
+
 main : Html msg
 main =
     div []
         [ div [ class "header" ]
             [ h1 [] [ text "Picshare" ] ]
         , div [ class "content-flow" ]
-            [ img [ src "https://avatars.githubusercontent.com/u/36134103?v=4" ] []
-            , div [ class "photo-info" ]
-                [ h2 [ class "caption" ] [ text "kazuhi-ra" ] ]
-            ]
+            [ viewDetailedPhoto "https://avatars.githubusercontent.com/u/36134103?v=4" "kazuhi-ra" ]
         ]
